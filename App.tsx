@@ -1,9 +1,9 @@
-import { SafeAreaView, ScrollView, Text } from 'react-native';
+import { SafeAreaView, ScrollView, Text} from 'react-native';
 import CommonStyles from './styles/CommonStyles';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useEffect } from "react"
-import { storeData,getData } from './utils/storage';
+import { storeData } from './utils/storage';
 // IMPORT contacts function
 import * as Contacts from 'expo-contacts';
 // screen

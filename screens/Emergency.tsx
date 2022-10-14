@@ -5,6 +5,8 @@ import CommonStyles from "../styles/CommonStyles";
 // components
 import ButtonBox from "../components/ButtonBox";
 import PhoneContacts from "../components/PhoneContacts";
+import Maps from "../components/Maps";
+import SosModal from "../components/SosModal";
 
 interface EmergencyProps {
     navigation:any;
@@ -20,15 +22,17 @@ const Emergency:FC<EmergencyProps> = ({ navigation }) => {
     <View style={[CommonStyles.fullScreenSize,CommonStyles.genericContainer]}>
         <View style={CommonStyles.genericContainer}>
             <Text>
-                Emergency
+                LA TUA POSIZIONE ATTUALE
             </Text>
             <ButtonBox
             label={'vai al pannello Home'}
             callback={goToHome}
             />
+            <Maps/>
         </View>
         <View style={CommonStyles.container2}>
             <PhoneContacts/>
+            <SosModal/>
         </View>
     </View>
   )

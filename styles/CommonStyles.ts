@@ -32,16 +32,16 @@ export default StyleSheet.create({
         paddingHorizontal:6
     },
     secondaryBg:{
-        backgroundColor: '#ff69b4'
+        backgroundColor: '#EDF2F4'
     },
     brandColorBg: {
-        backgroundColor:'blueviolet',
+        backgroundColor:'#EF233C',
     },
     branColorText:{
-        color:'blueviolet'
+        color:'#EF233C'
     },
     secondaryColorText:{
-        color:'blueviolet'
+        color:'#EDF2F4'
     },
     titleFont:{
         fontSize:40,
