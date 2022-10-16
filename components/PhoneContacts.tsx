@@ -52,27 +52,31 @@ const PhoneContacts: FC = () => {
     }
 
     return (
-        <View style={[CommonStyles.fullScreenSize, CommonStyles.genericContainer]}>
-            <Text>
-                CONTACTS
+        <View style={[CommonStyles.fullScreenSize, CommonStyles.genericContainer,CommonStyles.paddingContainer]}>
+            <Text style={[CommonStyles.boldFont,CommonStyles.branColorText,CommonStyles.normalTextSize]}>
+                I TUOI CONTATTI PREFERITI
             </Text>
-            {
-                state.contacts.map((contacts,index) => {
-                    return(
-                        <View key={index}>
-                            <Text> 
-                                {contacts.name}
-                            </Text>
-                            <ButtonBox
-                            label={'remove'}
-                            callback={removePrefer(contacts.name)}
-                            />
-                        </View>
-                    )
-                })
-            }
-            <ModalBoxSearch
-            />
+            <View style={[CommonStyles.row]}>
+                <ModalBoxSearch
+                />
+                {
+                    state.contacts.map((contacts,index) => {
+                        return(
+                            <View style={[CommonStyles.column,{width:70}]} key={index}>
+                                <ButtonBox
+                                label={'-'}
+                                callback={removePrefer(contacts.name)}
+                                buttonContainerStyle={[CommonStyles.contacts,CommonStyles.brandColorBg,CommonStyles.centerItems]}
+                                buttonTextStyle={[CommonStyles.boldFont,CommonStyles.secondaryColorText,{fontSize:30}]}
+                                />
+                                <Text> 
+                                    {contacts.name}
+                                </Text>
+                            </View>
+                        )
+                    })
+                }
+            </View>
         </View>
     )
 }

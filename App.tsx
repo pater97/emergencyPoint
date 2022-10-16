@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView, Text} from 'react-native';
+import { SafeAreaView, ScrollView, Text, StatusBar} from 'react-native';
 import CommonStyles from './styles/CommonStyles';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -49,8 +49,9 @@ export default function App() {
 
   return (
     <SafeAreaView style={CommonStyles.genericContainer}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName='Home'>
+      <StatusBar backgroundColor={'#EF233C'}/>
+      <NavigationContainer >
+        <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='Home'>
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Emergency" component={Emergency} />
         </Stack.Navigator>

@@ -13,11 +13,24 @@ export default StyleSheet.create({
     column:{
         flexDirection:'column'
     },
+    row:{
+        display:'flex',
+        flexDirection:'row'
+    },
+    spaceAround:{
+        justifyContent:"space-around"
+    },
+    rowHeader:{
+        display:'flex',
+        flexDirection:'row',
+        justifyContent:'space-between'
+    },
     fullScreenSize: {
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height
     },
     centerItems:{
+        display:'flex',
         justifyContent:"center",
         alignItems:"center"
     },
@@ -28,8 +41,11 @@ export default StyleSheet.create({
         justifyContent:'center'
     },
     paddingContainer:{
-        paddingVertical:50,
+        paddingVertical:30,
         paddingHorizontal:6
+    },
+    paddingBottom:{
+        paddingBottom:15
     },
     secondaryBg:{
         backgroundColor: '#EDF2F4'
@@ -59,14 +75,23 @@ export default StyleSheet.create({
     normalTextSize:{
         fontSize:20
     },
+    textCenter:{
+        textAlign:"center"
+    },
     lineThrough:{
         textDecorationLine:'line-through'
     },
-    buttonBox:{
-        paddingHorizontal:30,
-        paddingVertical:10,
-        borderRadius:10,
-        margin:10
+    marginRigth:{
+        marginRight:20
+    },
+    paddingHeader:{
+        paddingHorizontal:3,
+        paddingVertical:5
+    },
+    buttonBoxHeader:{
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center'
     },
     inputBox: {
         height: 40,
@@ -75,5 +100,21 @@ export default StyleSheet.create({
         borderWidth: .2,
         padding: 10,
         borderColor:'blueviolet'
+    },
+    buttonSos:{
+        height:200,
+        width:200,
+        display:'flex',
+        justifyContent:'center',
+        alignItems:"center",
+        borderRadius:200
+    },
+    sosText:{
+        fontSize:70
+    },
+    contacts:{
+        height:40,
+        width:40,
+        borderRadius:40
     }
 })

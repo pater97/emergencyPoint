@@ -7,6 +7,7 @@ import ButtonBox from "../components/ButtonBox";
 import PhoneContacts from "../components/PhoneContacts";
 import Maps from "../components/Maps";
 import SosModal from "../components/SosModal";
+import Header from "../components/Header";
 
 interface EmergencyProps {
     navigation:any;
@@ -14,20 +15,21 @@ interface EmergencyProps {
 
 const Emergency:FC<EmergencyProps> = ({ navigation }) => {
 
-    const goToHome = ():void => {
-        navigation.navigate('Home')
+    const goBack = () => {
+        navigation.goBack()
     }
 
   return (
     <View style={[CommonStyles.fullScreenSize,CommonStyles.genericContainer]}>
-        <View style={CommonStyles.genericContainer}>
-            <Text>
+        <Header
+        title="EMERGENCY"
+        headerFunction={goBack}
+        buttonVisible={true}
+        />
+        <View style={[CommonStyles.genericContainer,CommonStyles.brandColorBg,CommonStyles.paddingContainer]}>
+            <Text style={[CommonStyles.textCenter,CommonStyles.normalTextSize,CommonStyles.secondaryColorText,CommonStyles.boldFont,CommonStyles.paddingBottom]}>
                 LA TUA POSIZIONE ATTUALE
             </Text>
-            <ButtonBox
-            label={'vai al pannello Home'}
-            callback={goToHome}
-            />
             <Maps/>
         </View>
         <View style={CommonStyles.container2}>

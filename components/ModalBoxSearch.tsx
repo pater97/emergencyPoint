@@ -145,10 +145,14 @@ const ModalBoxSearch: FC = () => {
           </View>
         </View>
       </Modal>
-      <ButtonBox
-        label={'Aggiungi contatti +'}
-        callback={openModal}
-      />
+      <View style={{width:70}}>
+        <ButtonBox
+          label={'+'}
+          callback={openModal}
+          buttonContainerStyle={[CommonStyles.brandColorBg,CommonStyles.contacts,CommonStyles.centerItems]}
+          buttonTextStyle={[CommonStyles.secondaryColorText,CommonStyles.boldFont,{fontSize:30}]}
+        />
+      </View>
     </View>
   );
 };
