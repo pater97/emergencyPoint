@@ -62,7 +62,7 @@ const ModalBoxSearch: FC = () => {
   // // use effect per popolare l'array di contatti
   useEffect(() => {
     getDataContacts()
-  }, [])
+  }, [state.modalVisible])
 
   // funzione per chiamare lo storage dei contatti
   const getDataContacts = async () => {
