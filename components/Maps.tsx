@@ -1,8 +1,9 @@
 import React, { FC } from 'react'
 import { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Dimensions } from 'react-native';
-// importo il location
-import * as Location from 'expo-location';
+import { View, StyleSheet, Text} from 'react-native';
+import CommonStyles from '../styles/CommonStyles';
+// Storage
+import { getData } from '../utils/storage';
 // import la mappa
 import MapView from 'react-native-maps';
 // importo marker
@@ -17,10 +18,24 @@ interface State {
 
 const initialState: State = {
     location: null,
-    errorMsg: null,
+    errorMsg: true,
     latitude: 	45.5809965,
     longitude: 9.4136515
 }
+
+type LocationType = {
+    location:object | any,
+    latitude:number | any,
+    longitude:number | any,
+    errorMsg:boolean
+  }
+  
+  let locationData:LocationType = {
+    location:  null,
+    latitude: 45.5809965,
+    longitude: 9.4136515,
+    errorMsg:true
+  }
 
 const Maps: FC = () => {
 
@@ -29,42 +44,28 @@ const Maps: FC = () => {
 
     // useeffect che allo start dell'app manda la funzione 
     useEffect(() => {
+        getLocationData()
         getLocation()
     }, []);
 
+    const getLocationData = async () => {
+        locationData = await getData('locationData')
+        console.log('lo storage della posizione',locationData)
+    }
     //creo la funzione asyncrona per estrapolare la localizzazione 
-    const getLocation = async (): Promise<void> => {
-        // inserisco in una variabile la risposta positiva o negativa riguardo al permesso
-        let { status } = await Location.requestForegroundPermissionsAsync()
-        // controllo che sia stato dato il permesso e nel caso negativo fermo tutto 
-        if (status !== 'granted') {
-            console.log('qui ci arrivi')
-            setState({
-                ...state,
-                errorMsg: 'Permission to access location was denied'
-            });
-            return;
-        }
-        // ottengo la locazione corretta 
-        let locationNow = await Location.getCurrentPositionAsync({});
+    const getLocation = async () => {
         setState({
             ...state,
-            location: locationNow,
-            latitude:locationNow.coords.latitude,
-            longitude:locationNow.coords.longitude
+            location: locationData.location,
+            latitude:locationData.latitude,
+            longitude:locationData.longitude,
+            errorMsg:locationData.errorMsg
         })
-    }
-    // display della location
-    let text = 'Waiting..';
-    if (state.errorMsg) {
-        text = state.errorMsg;
-    } else if (state.location) {
-        text = JSON.stringify(state.location);
     }
 
     return (
         <View style={styles.container}>
-            <MapView style={styles.map}
+            <MapView  style={styles.map}
                 initialRegion={{
                     latitude: state.latitude,
                     longitude: state.longitude,
@@ -84,10 +85,12 @@ const Maps: FC = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection:'row',
+        justifyContent:'center'
     },
     map: {
-        width: '100%',
-        height: '100%',
+        width: '80%',
+        height: '100%'
     }
 });
 

@@ -8,6 +8,32 @@ import CommonStyles from '../styles/CommonStyles';
 import InputBox from './InputBox';
 import ButtonBox from './ButtonBox';
 
+// translate
+import * as Localization from 'expo-localization';
+import { I18n } from 'i18n-js';
+
+
+// traduzioni
+const translations = {
+  en: {
+    description1: 'ATTENTION',
+    description2: 'CONTACTS',
+    description3: 'crossed out reds indicate an invalid number, it is possible to add it, but it is certainly not working'
+  },
+  it: {
+    description1: 'ATTENZIONE: i ',
+    description2: 'CONTATTI',
+    description3: 'rossi sbarrati indicano un numero non validato, è possibile aggiungerlo, ma non è certo il funzionamento'
+  }
+};
+const i18n = new I18n(translations);
+
+// Set the locale once at the beginning of your app.
+i18n.locale = Localization.locale;
+
+// When a value is missing from a language it'll fallback to another language with the key present.
+i18n.enableFallback = true;
+
 // type
 type PhoneContactsType = {
   name: string,
@@ -101,56 +127,69 @@ const ModalBoxSearch: FC = () => {
         onRequestClose={MenageModal}>
         <View style={[CommonStyles.genericContainer, CommonStyles.fullScreenSize]}>
           <View style={styles.modalView}>
-
-            {/* questo sarà il search */}
-            <InputBox
-              callback={filterContacts}
-            />
+            <View style={CommonStyles.centerItems}>
+              {/* questo sarà il search */}
+              <InputBox
+                callback={filterContacts}
+                styleCss={CommonStyles.inputBox}
+              />
+              <Text style={CommonStyles.smallText}>{i18n.t('description1')} <Text style={[CommonStyles.lineThrough, CommonStyles.branColorText]}>{i18n.t('description2')} </Text> {i18n.t('description3')}</Text>
+            </View>
             {/* qui andrù la lista di persone con i loro checkbox di conferma */}
-            <ScrollView>
+            <ScrollView style={{ marginVertical: 10 }}>
               {
                 state.contacts.map((element, index) => {
                   return (
-                    <View key={index}>
+                    <View style={[CommonStyles.rowHeader, CommonStyles.centerVertical, CommonStyles.paddingY]} key={index}>
                       {
-                        element.number.toString().includes('+39') 
-                        ?
-                        <Text style={CommonStyles.boldFont}>
-                          {element.name}
-                        </Text>
-                        :
-                        <Text>
-                          {element.name}
-                        </Text>
+                        element.number.toString().includes('+39')
+                          ?
+                          <Text style={[CommonStyles.lineThrough, CommonStyles.branColorText]}>
+                            {element.name}
+                          </Text>
+                          :
+                          <Text style={[CommonStyles.boldFont, { fontSize: 16 }]}>
+                            {element.name}
+                          </Text>
                       }
                       <ButtonBox
-                        label={'add'}
+                        label={'+'}
                         callback={addPrefer(element)}
+                        buttonContainerStyle={[CommonStyles.contacts, CommonStyles.trdBg, CommonStyles.centerItems, CommonStyles.marginRigth]}
+                        buttonTextStyle={[CommonStyles.normalTextSize, CommonStyles.boldFont, CommonStyles.secondaryColorText]}
                       />
                     </View>
                   )
                 })
               }
             </ScrollView>
-            {/* qui metterò il pulsante conferma scelta */}
-            <ButtonBox
-              label={'SALVA'}
-              callback={savePreferContacts}
-            />
-            {/* bottone per chiudere il modal */}
-            <ButtonBox
-              label={'Chiudi'}
-              callback={MenageModal}
-            />
+            <View style={CommonStyles.centerItems}>
+              {/* qui metterò il pulsante conferma scelta */}
+              <ButtonBox
+                label={'SALVA'}
+                callback={savePreferContacts}
+                buttonContainerStyle={[CommonStyles.brandColorBg, CommonStyles.squareButton]}
+                buttonTextStyle={[CommonStyles.boldFont, CommonStyles.secondaryColorText]}
+              />
+            </View>
+            <View style={CommonStyles.centerItems}>
+              {/* bottone per chiudere il modal */}
+              <ButtonBox
+                label={'Chiudi'}
+                callback={MenageModal}
+                buttonContainerStyle={CommonStyles.squareButton}
+                buttonTextStyle={[CommonStyles.underline, CommonStyles.normalTextSize, CommonStyles.branColorText]}
+              />
+            </View>
           </View>
         </View>
       </Modal>
-      <View style={{width:70}}>
+      <View style={[CommonStyles.genericContainer, { width: 70 }]}>
         <ButtonBox
           label={'+'}
           callback={openModal}
-          buttonContainerStyle={[CommonStyles.brandColorBg,CommonStyles.contacts,CommonStyles.centerItems]}
-          buttonTextStyle={[CommonStyles.secondaryColorText,CommonStyles.boldFont,{fontSize:30}]}
+          buttonContainerStyle={[CommonStyles.trdBg, CommonStyles.contacts, CommonStyles.centerItems]}
+          buttonTextStyle={[CommonStyles.secondaryColorText, CommonStyles.boldFont, { fontSize: 25 }]}
         />
       </View>
     </View>
@@ -168,10 +207,10 @@ const styles = StyleSheet.create({
     margin: 20,
     width: '90%',
     height: '90%',
-    backgroundColor: 'white',
+    backgroundColor: '#EDF2F4',
     borderRadius: 20,
     padding: 35,
-    alignItems: 'center',
+    // alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

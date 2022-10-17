@@ -10,6 +10,12 @@ export default StyleSheet.create({
     container3:{
         flex:3
     },
+    positionRelative:{
+        position:"relative"
+    },
+    positionAbsolute:{
+        position:"absolute"
+    },
     column:{
         flexDirection:'column'
     },
@@ -44,8 +50,21 @@ export default StyleSheet.create({
         paddingVertical:30,
         paddingHorizontal:6
     },
+    paddingContainer2:{
+        paddingHorizontal:10,
+        paddingVertical:10
+    },
     paddingBottom:{
         paddingBottom:15
+    },
+    paddingX:{
+        paddingHorizontal:10
+    },
+    paddingY:{
+        paddingVertical:20
+    },
+    marginY:{
+        marginVertical:10
     },
     secondaryBg:{
         backgroundColor: '#EDF2F4'
@@ -59,15 +78,23 @@ export default StyleSheet.create({
     secondaryColorText:{
         color:'#EDF2F4'
     },
+    trdBg:{
+        backgroundColor:'#2B2D42'
+    },
+    trdText:{
+        color:'#2B2D42'
+    },
     titleFont:{
         fontSize:40,
-        fontWeight:'bold',
     },
     whiteColor:{
         color:'#f6f6f6'
     },
     boldFont:{
         fontWeight:'bold'
+    },
+    smallText:{
+        fontSize:13
     },
     halfWidth:{
         width:'50%'
@@ -81,8 +108,14 @@ export default StyleSheet.create({
     lineThrough:{
         textDecorationLine:'line-through'
     },
+    underline:{
+        textDecorationLine:"underline"
+    },
+    textMaiusc:{
+        textTransform:"uppercase"
+    },
     marginRigth:{
-        marginRight:20
+        marginRight:10
     },
     paddingHeader:{
         paddingHorizontal:3,
@@ -97,9 +130,9 @@ export default StyleSheet.create({
         height: 40,
         width:300,
         margin: 12,
-        borderWidth: .2,
+        borderWidth: 2,
         padding: 10,
-        borderColor:'blueviolet'
+        borderColor:'#EF233C'
     },
     buttonSos:{
         height:200,
@@ -116,5 +149,21 @@ export default StyleSheet.create({
         height:40,
         width:40,
         borderRadius:40
+    },
+    squareButton:{
+        paddingHorizontal:20,
+        paddingVertical:10,
+        borderRadius:10
+    },
+    image:{
+        width:'100%',
+        height:40
+    },
+    imageBg:{
+        width:'100%',
+        height:70
+    },
+    wpButton:{
+        backgroundColor:'#25D366'
     }
 })
