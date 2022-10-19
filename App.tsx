@@ -1,11 +1,14 @@
-import { SafeAreaView, ScrollView, Text, StatusBar} from 'react-native';
+// rn cmponent
+import { SafeAreaView, StatusBar} from 'react-native';
+// react 
+import { useEffect} from "react"
+// style
 import CommonStyles from './styles/CommonStyles';
+// navigazione
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useEffect, useCallback } from "react"
+// storage
 import { storeData } from './utils/storage';
-import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
 // IMPORT contacts function
 import * as Contacts from 'expo-contacts';
 // import location function
@@ -15,15 +18,17 @@ import * as Location from 'expo-location';
 import Home from './screens/Home';
 import Emergency from './screens/Emergency';
 
+// crate navigation
 const Stack = createNativeStackNavigator();
 
+// typo dello storage per la locazione
 type LocationType = {
   location:object | null,
   latitude:number | null,
   longitude:number | null,
   errorMsg:boolean 
 }
-
+// array per il salvataggio della locazione
 let locationData:LocationType = {
   location:  null,
   latitude: null,
@@ -32,29 +37,20 @@ let locationData:LocationType = {
 }
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
-    'Kanit-Black': require('./assets/fonts/kaint/Kanit-Black.ttf'),
-  });
 
   // useEffect per richiamare la funzione
   useEffect(() => {
+    // ottengo e salvo i dati
     getContact()
     getLocation()
-    async function prepare() {
-      await SplashScreen.preventAutoHideAsync();
-    }
-    prepare();
   }, [])
 
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
+
+
 
 
   // funzione asyncrona per chidere il permesso e avere i numeri di telefono
-  const getContact = async () => {
+  const getContact = async ():Promise<any> => {
     const contacts: Array<object> = []
     const { status } = await Contacts.requestPermissionsAsync();
     if (status === 'granted') {
@@ -64,6 +60,7 @@ export default function App() {
 
       if (data.length > 0) {
 
+        // pulisco l'array di contatti con solo contatti che hanno il numero (filter)
         data.map((element) => {
           if (!!element.phoneNumbers) {
             let dataName = element.name
@@ -103,7 +100,7 @@ export default function App() {
 }
 
   return (
-    <SafeAreaView style={CommonStyles.genericContainer} onLayout={onLayoutRootView}>
+    <SafeAreaView style={CommonStyles.genericContainer}>
       <StatusBar backgroundColor={'#EF233C'}/>
       <NavigationContainer >
         <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='Home'>

@@ -2,6 +2,7 @@
 import { FC, useState } from "react"
 import { ImageBackground, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
+// import localization
 import * as Localization from 'expo-localization';
 import { I18n } from 'i18n-js';
 // stile
@@ -81,10 +82,10 @@ const Home: FC<HomeProps> = ({ navigation }) => {
       />
       {/* container princpale */}
       <View style={[CommonStyles.container2]}>
-        <Text style={[{ fontFamily: 'Kanit-Black' }, CommonStyles.textCenter, CommonStyles.paddingBottom, CommonStyles.titleFont, CommonStyles.branColorText]}>
+        <Text style={[CommonStyles.boldFont, CommonStyles.textCenter, CommonStyles.paddingBottom, CommonStyles.titleFont, CommonStyles.branColorText]}>
           {i18n.t('emergency')}
         </Text>
-        <Text style={[{ fontFamily: 'Kanit-Black' }, CommonStyles.textCenter, CommonStyles.trdText, CommonStyles.normalTextSize, CommonStyles.paddingX]}>
+        <Text style={[CommonStyles.boldFont, CommonStyles.textCenter, CommonStyles.trdText, CommonStyles.normalTextSize, CommonStyles.paddingX]}>
           {i18n.t('homeCaption')}
         </Text>
       </View>
@@ -114,13 +115,13 @@ const Home: FC<HomeProps> = ({ navigation }) => {
       {
         tutorialVisible &&
         <View style={[CommonStyles.paddingContainer, CommonStyles.genericContainer, CommonStyles.secondaryBg, CommonStyles.positionAbsolute, CommonStyles.fullScreenSize, CommonStyles.centerVertical]}>
-          <Text style={[CommonStyles.branColorText, CommonStyles.textCenter, CommonStyles.titleFont, { fontFamily: 'Kanit-Black' }]}>
+          <Text style={[CommonStyles.boldFont,CommonStyles.branColorText, CommonStyles.textCenter, CommonStyles.titleFont]}>
             TUTORIAL
           </Text>
-          <Text style={[CommonStyles.branColorText, CommonStyles.textCenter, CommonStyles.normalTextSize, { fontFamily: 'Kanit-Black' }]}>
+          <Text style={[CommonStyles.boldFont, CommonStyles.branColorText, CommonStyles.textCenter, CommonStyles.normalTextSize]}>
             1. SOS
           </Text>
-          <Text style={[CommonStyles.paddingBottom, CommonStyles.trdText, CommonStyles.textCenter, CommonStyles.normalTextSize, { fontFamily: 'Kanit-Black' }]}>
+          <Text style={[CommonStyles.paddingBottom, CommonStyles.trdText, CommonStyles.textCenter, CommonStyles.normalTextSize]}>
             {i18n.t('tutorial1')}
           </Text>
           <ButtonBox
@@ -129,10 +130,10 @@ const Home: FC<HomeProps> = ({ navigation }) => {
             buttonContainerStyle={[CommonStyles.contacts, CommonStyles.brandColorBg, CommonStyles.centerItems]}
             buttonTextStyle={[CommonStyles.boldFont, CommonStyles.secondaryColorText]}
           />
-          <Text style={[CommonStyles.branColorText, CommonStyles.textCenter, CommonStyles.normalTextSize, { fontFamily: 'Kanit-Black' }]}>
+          <Text style={[CommonStyles.boldFont,CommonStyles.branColorText, CommonStyles.textCenter, CommonStyles.normalTextSize]}>
             2. {i18n.t('tutorialTitle2')}
           </Text>
-          <Text style={[CommonStyles.trdText, CommonStyles.textCenter, CommonStyles.normalTextSize, { fontFamily: 'Kanit-Black' }]}>
+          <Text style={[CommonStyles.paddingBottom,CommonStyles.trdText, CommonStyles.textCenter, CommonStyles.normalTextSize]}>
             {i18n.t('tutorial2')}
           </Text>
           <ButtonBox
@@ -141,10 +142,10 @@ const Home: FC<HomeProps> = ({ navigation }) => {
             buttonContainerStyle={[CommonStyles.contacts, CommonStyles.trdBg, CommonStyles.centerItems, CommonStyles.marginRigth]}
             buttonTextStyle={[CommonStyles.normalTextSize, CommonStyles.boldFont, CommonStyles.secondaryColorText]}
           />
-          <Text style={[CommonStyles.branColorText, CommonStyles.textCenter, CommonStyles.normalTextSize, { fontFamily: 'Kanit-Black' }]}>
+          <Text style={[CommonStyles.boldFont,CommonStyles.branColorText, CommonStyles.textCenter, CommonStyles.normalTextSize]}>
             3. {i18n.t('tutorialTitle3')}
           </Text>
-          <Text style={[CommonStyles.trdText, CommonStyles.textCenter, CommonStyles.normalTextSize, { fontFamily: 'Kanit-Black' }]}>
+          <Text style={[CommonStyles.paddingBottom,CommonStyles.trdText, CommonStyles.textCenter, CommonStyles.normalTextSize]}>
             {i18n.t('tutorial3')}
           </Text>
           <ButtonBox

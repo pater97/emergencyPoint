@@ -51,7 +51,7 @@ const initialState: State = {
 }
 
 // array di appoggio per il filter
-let allContacts: Array<object> = []
+let allContacts: Array<PhoneContactsType> = []
 // array che contiene i 5 contatti preferiti
 let preferContacts: Array<object> = []
 

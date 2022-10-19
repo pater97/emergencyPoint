@@ -1,13 +1,12 @@
 import React, { FC } from 'react'
 import { useState, useEffect } from 'react';
 import { View, StyleSheet, Text} from 'react-native';
-import CommonStyles from '../styles/CommonStyles';
 // Storage
 import { getData } from '../utils/storage';
 // import la mappa
 import MapView from 'react-native-maps';
 // importo marker
-import { Marker } from 'react-native-maps';
+import { Marker,PROVIDER_GOOGLE } from 'react-native-maps';
 
 interface State {
     location: any;
@@ -50,7 +49,6 @@ const Maps: FC = () => {
 
     const getLocationData = async () => {
         locationData = await getData('locationData')
-        console.log('lo storage della posizione',locationData)
     }
     //creo la funzione asyncrona per estrapolare la localizzazione 
     const getLocation = async () => {
@@ -66,6 +64,7 @@ const Maps: FC = () => {
     return (
         <View style={styles.container}>
             <MapView  style={styles.map}
+                provider={PROVIDER_GOOGLE}
                 initialRegion={{
                     latitude: state.latitude,
                     longitude: state.longitude,

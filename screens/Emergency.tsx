@@ -6,7 +6,6 @@ import { I18n } from 'i18n-js';
 // stile
 import CommonStyles from "../styles/CommonStyles";
 // components
-import ButtonBox from "../components/ButtonBox";
 import PhoneContacts from "../components/PhoneContacts";
 import Maps from "../components/Maps";
 import SosModal from "../components/SosModal";
@@ -48,7 +47,7 @@ const Emergency: FC<EmergencyProps> = ({ navigation }) => {
                 buttonVisible={true}
             />
             <View style={[CommonStyles.container2, CommonStyles.brandColorBg, CommonStyles.paddingContainer]}>
-                <Text style={[CommonStyles.normalTextSize, CommonStyles.secondaryColorText, CommonStyles.paddingBottom, CommonStyles.textCenter, { fontFamily: 'Kanit-Black' }]}>
+                <Text style={[CommonStyles.normalTextSize, CommonStyles.secondaryColorText, CommonStyles.paddingBottom, CommonStyles.textCenter,CommonStyles.boldFont]}>
                     {i18n.t('mapTitle')}
                 </Text>
                 <Maps />

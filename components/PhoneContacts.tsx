@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react"
-import { SafeAreaView, ScrollView, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 // storage
 import { getData, storeData } from "../utils/storage";
 // stile
@@ -76,7 +76,7 @@ const PhoneContacts: FC = () => {
 
     return (
         <View style={[CommonStyles.fullScreenSize, CommonStyles.genericContainer, CommonStyles.paddingContainer2]}>
-            <Text style={[CommonStyles.textCenter, { fontFamily: 'Kanit-Black' }, CommonStyles.branColorText, CommonStyles.normalTextSize]}>
+            <Text style={[CommonStyles.boldFont,CommonStyles.textCenter, CommonStyles.branColorText, CommonStyles.normalTextSize]}>
                 {i18n.t('title')}
             </Text>
             <Text style={[CommonStyles.textCenter, CommonStyles.trdText, CommonStyles.paddingBottom, CommonStyles.smallText]}>

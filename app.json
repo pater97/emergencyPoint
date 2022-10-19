@@ -2,7 +2,7 @@
   "expo": {
     "name": "emergencyPoint",
     "slug": "emergencyPoint",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -21,13 +21,25 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "it.giuseppe.emergencyPoint",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyC_l-NrR3N9bnDtxZrZbosuEIXyWT7RUZ8"
+        }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/cover/iconaEP.png",
         "backgroundColor": "#FFFFFF"
       }
+      
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a8f440c7-20bb-42c0-97ec-23443bef5824"
+      }
     }
   }
 }
